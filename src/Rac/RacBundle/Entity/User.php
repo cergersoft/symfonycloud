@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Users")
  * @ORM\Entity(repositoryClass="Rac\RacBundle\Entity\UserRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class User
 {
@@ -271,4 +272,16 @@ class User
     {
         return $this->createAt;
     }
+    
+    // method persint
+    
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAtValue()
+    {
+        $this->createAt = new \DateTime();
+    }
+    
+    
 }

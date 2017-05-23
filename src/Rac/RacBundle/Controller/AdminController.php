@@ -29,6 +29,36 @@ class AdminController extends Controller
     return $this->render('RacRacBundle:Admin:add.html.twig', array('form' => $form->createView()));  
   }
   
+  public function createAction(Request $request)
+    {
+        $user = new user();
+        
+        $form=$this->createCreateForm($user);
+        $form->handleRequest($request);
+    
+        if($form->isValid()) {
+           
+           $user->setActive(0);
+           $user->setRole('ROLE_USER');
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($user);
+           $em->flush();
+           
+           $successalertadd = $this -> get('translator')->trans('The User has been register he success.');
+           $this->addFlash('alertadd', $successalertadd);
+           
+           return $this->redirectToRoute('rac_rac_add');
+
+             
+        }
+        
+        return $this->render('RacRacBundle:Admin:add.html.twig', array('form' => $form->createView()));
+        
+    }
+  
+  
+  
+  
   
   // funciones privadas
   
