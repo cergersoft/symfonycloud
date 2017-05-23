@@ -1,9 +1,9 @@
 <?php
 
-namespace Dam\UserBundle;
+namespace Rac\RacBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class DamUserBundle extends Bundle
+class RacRacBundle extends Bundle
 {
 }

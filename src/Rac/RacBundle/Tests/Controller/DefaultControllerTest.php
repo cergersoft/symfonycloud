@@ -1,6 +1,6 @@
 <?php
 
-namespace Dam\UserBundle\Tests\Controller;
+namespace Rac\RacBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

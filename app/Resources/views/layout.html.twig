@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}merchusmix!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
         {% endblock %}
@@ -17,7 +18,7 @@
         {% endblock %}
         
         {% block javascripts %}
-        <script src="{{ asset('public/js/jquey-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('public/js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('public/js/bootbox.min.js') }}"></script>
         {% endblock %}

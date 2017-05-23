@@ -1,0 +1,12 @@
+rac_rac_homepage:
+    path:     /index
+    defaults: { _controller: RacRacBundle:Admin:home }
+
+rac_rac_add:
+    path:     /add
+    defaults: { _controller: RacRacBundle:Admin:add }
+    
+rac_rac_create:
+    path:     /create
+    defaults: { _controller: RacRacBundle:Admin:create }
+    methods: POST

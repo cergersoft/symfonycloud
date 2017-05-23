@@ -1,49 +1,64 @@
- <nav class="navbar navbar-inverse">
+   
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">J-cell</a>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                     
+      </button>
+      <img src="{{ asset('public/image/slide221.jpg') }}" class="navbar-brand" height="60px" width="100px">
     </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
     <ul class="nav navbar-nav">
     
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">celulares
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">New youth
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+          <li><a href="{{ path('rac_rac_add') }}">Add User</a></li>
+          <li><a href="#">View User</a></li>
+          <li><a href="#">User invoice</a></li>
         </ul>
       </li>
       
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">accesorios
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friends Club
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+          <li><a href="#">User invoice</a></li>
+          <li><a href="#">View User</a></li>
+          <li><a href="#">Support users</a></li>
         </ul>
       </li>
       
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">servicio tecnico
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Zahira Events
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+          <li><a href="#">calendar</a></li>
+          <li><a href="#">Contracts</a></li>
+          <li><a href="#">View event</a></li>
         </ul>
       </li>
       
-      
-      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">walk
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">walk</a></li>
+          <li><a href="#">Payments</a></li>
+        </ul>
+      </li>
+    
     </ul>
-    
-    
     
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
+      
+    </div>
   </div>
-</nav> 
+</nav>

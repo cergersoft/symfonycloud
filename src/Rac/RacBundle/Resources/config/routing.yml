@@ -1,0 +1,2 @@
+rac_rac_user:
+    resource: "@RacRacBundle/Resources/config/route/admin.yml"
