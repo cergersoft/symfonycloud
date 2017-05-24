@@ -21,12 +21,30 @@ class AdminController extends Controller
   
   // funcion agregar 
   
-  public function addAction()
+  public function addAction(Request $request)
   {
+      
+      // paginador
+      
+      $em = $this->getDoctrine()->getManager();
+        //$users = $mer->getRepository('merchus2UserBundle:user')->findAll();
+        
+        $sql="SELECT u FROM RacRacBundle:User u ORDER BY u.id DESC";
+        $users=$em->createQuery($sql);
+        
+        //codigo para paginacion
+        $paginator=$this->get('knp_paginator');
+        $pagination=$paginator->paginate(
+        $users, $request->query->getInt('page', 1),
+        5
+                );
+      
+      // paginador
+      
     $user = new user();
     $form = $this->createCreateForm($user);
      
-    return $this->render('RacRacBundle:Admin:add.html.twig', array('form' => $form->createView()));  
+    return $this->render('RacRacBundle:Admin:add.html.twig', array('pagination' => $pagination, 'form' => $form->createView()));  
   }
   
   public function createAction(Request $request)
@@ -38,7 +56,7 @@ class AdminController extends Controller
     
         if($form->isValid()) {
            
-           $user->setActive(0);
+           $user->setActive(1);
            $user->setRole('ROLE_USER');
            $em = $this->getDoctrine()->getManager();
            $em->persist($user);

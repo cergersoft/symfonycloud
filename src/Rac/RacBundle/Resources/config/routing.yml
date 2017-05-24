@@ -1,2 +1,5 @@
 rac_rac_user:
     resource: "@RacRacBundle/Resources/config/route/admin.yml"
+    
+rac_rac_gnj:
+    resource: "@RacRacBundle/Resources/config/route/gnj.yml"

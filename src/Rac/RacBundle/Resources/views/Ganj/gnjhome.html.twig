@@ -1,0 +1,51 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+  {{ parent() }}
+  
+ <div class="container">
+     
+     <h3>Registered Users <strong><span class="label label-info" id="total">{{ pagination.getTotalItemCount }}</span> </strong></h3>
+     <hr>
+                    
+    <table class="table">
+	<thead>
+		<tr>
+			<th><center>Name</center></th>
+			<th><center>Identification Card</center></th>
+			<th><center>Birthdate</center></th>
+			<th><center>Address</center></th>
+                        <th><center>Phone</center></th>
+			<th><center>Eps</center></th>
+			<th><center>Contact Name</center></th>
+			<th><center>Contact Phone</center></th>
+			<th><center>Action</center></th>
+		</tr>
+	</thead>
+{% for user in pagination %}
+	<tbody>
+		<tr>
+			<td><center>{{ user.firstname }} {{ user.lastname }}</center></td>
+			<td><center>{{ user.identificationcard }}</center></td>
+			<td><center>{{ user.birthdate }}</center></td>
+                        <td><center>{{ user.address }}</center></td>
+			<td><center>{{ user.phone }}</center></td>
+                        <td><center>{{ user.eps }}</center></td>
+                        <td><center>{{ user.contactname }}</center></td>
+			<td><center>{{ user.contactphone }}</center></td>
+                        <td>
+                            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
+                            <p></p>
+                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+
+		</tr>
+	</tbody>
+{% endfor %}
+</table>
+<div class="navigation">
+  {{ knp_pagination_render(pagination) }}
+</div>      
+ </div>  
+    
+{%endblock %}

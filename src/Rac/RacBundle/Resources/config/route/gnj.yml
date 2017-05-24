@@ -1,0 +1,16 @@
+rac_Gnj_homepage:
+    path:     /gnj
+    defaults: { _controller: RacRacBundle:Gnj:gnjhome }
+
+rac_Gnj_add:
+    path:     /gnjadd
+    defaults: { _controller: RacRacBundle:Gnj:gnjadd }
+    
+rac_Gnj_create:
+    path:     /gnjcreate
+    defaults: { _controller: RacRacBundle:Gnj:gnjcreate }
+    methods: POST
+    
+rac_Gnj_view:
+    path:     /gnjview/{id}
+    defaults: { _controller: RacRacBundle:Gnj:gnjview }

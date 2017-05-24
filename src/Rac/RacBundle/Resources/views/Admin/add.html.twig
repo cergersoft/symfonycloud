@@ -5,6 +5,7 @@
 
     
     <div class="container">
+        {{ include('RacRacBundle:Ganj:message/alertsuccess.html.twig') }}
 	<div class="row">
             
 		<div class="col-md-4">
@@ -40,28 +41,9 @@
           <span class="text-danger">{{ form_errors(form.password) }}</span>
         </div>
         
-        {#
-        <div class="form-group">
-          {{ form_widget(form.role, { 'attr' : { 'class' : 'form-control' } }) }}
-          <span class="text-danger">{{ form_errors(form.role) }}</span>
-        </div>
-        
-        <div class="form-group">
-         <div class="checkbox">
-           <label>
-            {{ form_widget(form.active) }} Active
-            <span class="text-danger">{{ form_errors(form.role) }}</span>
-           </label>
-         </div>
-        </div>
-        
-        #}
-           
         <div class="form-group">
             {{ form_widget(form.save, { 'label' : 'Register User', 'attr' : { 'class' : 'btn btn-block btn-success' } }) }}
         </div>
-        
-        
         
         
         {{form_end(form)}}
@@ -79,23 +61,33 @@
         <table class="table">
             <thead>
               <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>State</th>
-                <th>Action</th>
+                <th><center>{{ knp_pagination_sortable(pagination, 'First name', 'u.fristname') }}</center></th>
+                <th><center>{{ knp_pagination_sortable(pagination, 'Last name', 'u.lastname') }}</center></th>
+                <th><center>State</center></th>
+                <th><center>Action</center></th>
               </tr>
             </thead>
-
+{% for user in pagination %}
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr data-id="{{ user.id }}">
+                <td><center>{{ user.fristname }}</center></td>
+                <td><center>{{ user.lastname }}</center></td>
+                <td><center>
+                    {% if user.active == 1 %}
+                        <span class="glyphicon glyphicon-ok text-success"> Active</span>
+                    {% elseif user.active == 0 %}
+                        <span class="glyphicon glyphicon-time text-danger"> Waiting</span>
+                    {% endif %}</center>
+                </td>
+                <td><center><a href="{{ path('rac_rac_view', {id: user.id}) }}" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a></center></td>
               </tr>
             </tbody>
+{% endfor %}
         </table>
                     
+         <div class="navigation">
+                {{ knp_pagination_render(pagination) }}
+            </div>           
                 </div>
                 
                 
