@@ -3,6 +3,7 @@
 namespace Rac\RacBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Gnj
@@ -26,6 +27,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_firstname", type="string", length=70)
+     * @Assert\NotBlank()
      */
     private $firstname;
 
@@ -33,6 +35,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_lastname", type="string", length=70)
+     * @Assert\NotBlank()
      */
     private $lastname;
     
@@ -41,6 +44,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_identificationcard", type="string", length=10)
+     * @Assert\NotBlank()
      */
     private $identificationcard;
     
@@ -49,6 +53,7 @@ class Gnj
      * @var \string
      *
      * @ORM\Column(name="Ganj_birthdate", type="string", length=10)
+     * @Assert\NotBlank()
      */
     private $birthdate;
 
@@ -56,6 +61,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_mail", type="string", length=80)
+     * @Assert\NotBlank()
      */
     private $mail;
 
@@ -63,6 +69,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_address", type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $address;
 
@@ -70,6 +77,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_phone", type="string", length=20)
+     * @Assert\NotBlank()
      */
     private $phone;
 
@@ -77,6 +85,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_contactname", type="string", length=80)
+     * @Assert\NotBlank()
      */
     private $contactname;
 
@@ -84,6 +93,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_contactphone", type="string", length=20)
+     * @Assert\NotBlank()
      */
     private $contactphone;
 
@@ -105,6 +115,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_annexed", type="string", length=200)
+     * @Assert\NotBlank()
      */
     private $annexed;
 
@@ -112,6 +123,7 @@ class Gnj
      * @var string
      *
      * @ORM\Column(name="Ganj_eps", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $eps;
 

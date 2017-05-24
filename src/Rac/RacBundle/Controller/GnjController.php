@@ -26,7 +26,7 @@ class GnjController extends Controller
         $paginator=$this->get('knp_paginator');
         $pagination=$paginator->paginate(
         $users, $request->query->getInt('page', 1),
-        3
+        6
                 );
       
       // paginador
@@ -70,6 +70,21 @@ class GnjController extends Controller
         
         return $this->render('RacRacBundle:Ganj:gnjadd.html.twig', array('form' => $form->createView()));
         
+    }
+    
+    
+    public function gnjviewAction($id)
+    {
+        
+        $repositori = $this->getDoctrine()->getRepository('RacRacBundle:Gnj');
+        $gnj = $repositori->find($id);
+        
+        if(!$gnj)
+      {
+          throw $this->createNotFoundException('Usuario no Encontrado');
+      }
+        
+        return $this->render('RacRacBundle:Ganj:gnjview.html.twig',  array('user'=> $gnj));
     }
   
   

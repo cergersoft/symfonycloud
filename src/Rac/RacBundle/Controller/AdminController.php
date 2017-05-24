@@ -56,7 +56,7 @@ class AdminController extends Controller
     
         if($form->isValid()) {
            
-           $user->setActive(1);
+           
            $user->setRole('ROLE_USER');
            $em = $this->getDoctrine()->getManager();
            $em->persist($user);

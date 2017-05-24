@@ -20,6 +20,7 @@ class UserType extends AbstractType
             ->add('username')
             ->add('mail', 'email')
             ->add('password', 'password')
+            ->add('active', 'checkbox')
             ->add('save', 'submit', array('label' => 'save User'))
         ;
     }

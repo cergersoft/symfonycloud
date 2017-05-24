@@ -1,1 +1,129 @@
-{# empty Twig template #}
+{% extends "layout.html.twig" %}
+
+{% block body %}
+  {{ parent() }}
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+                <div class="col-md-7">
+                    
+                  <h2> Ficha Persona </h2>
+                  <hr>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           Nombre: 
+                        </dt>
+                         <dd>
+                           {{ user.firstname }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Apellido: 
+                        </dt>
+                         <dd>
+                           {{ user.lastname }}  
+                         </dd>
+                         <hr>
+                         <dt>
+                           Cedula: 
+                        </dt>
+                         <dd>
+                           {{ user.identificationcard }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Cumpleaños: 
+                        </dt>
+                         <dd>
+                           {{ user.birthdate }}  
+                         </dd> 
+                    </dl>
+                      
+                  </div>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           E-mail: 
+                        </dt>
+                         <dd>
+                           {{ user.mail }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Direccion: 
+                        </dt>
+                         <dd>
+                           {{ user.address }}  
+                         </dd>
+                         <hr>
+                         <dt>
+                           Celular: 
+                        </dt>
+                         <dd>
+                           {{ user.phone }}  
+                         </dd>
+                         <hr>
+                         <dt>
+                           Eps: 
+                        </dt>
+                         <dd>
+                           {{ user.eps }}  
+                         </dd>
+                    </dl>
+                      
+                  </div>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           Nombre de Contacto: 
+                        </dt>
+                         <dd>
+                           {{ user.contactname }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Celular contacto: 
+                        </dt>
+                        <dd>
+                           {{ user.contactphone }}  
+                        </dd>
+                        <hr>
+                        <dt>
+                           Anexo: 
+                        </dt>
+                        <dd>
+                           {{ user.annexed }}  
+                        </dd>
+                        <hr>
+                        <dt>
+                           Estado: 
+                        </dt>
+                        <dd>
+                           {% if user.active == 0 %}
+                             <span class="glyphicon glyphicon-time text-danger" id="glyphicon-{{user.id}}"> Waiting</span>
+                           {% elseif user.active == 1 %}
+                             <span class="glyphicon glyphicon-ok text-success" id="glyphicon-{{user.id}}"> Finish</span>
+                           {% endif %} 
+                        </dd>
+                    </dl>
+                      
+                  </div>
+                       
+                </div>
+                        
+		<div class="col-md-2"></div>
+	</div>
+</div>
+
+
+{%endblock %}

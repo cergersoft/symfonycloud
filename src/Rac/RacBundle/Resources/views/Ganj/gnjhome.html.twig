@@ -19,6 +19,7 @@
 			<th><center>Eps</center></th>
 			<th><center>Contact Name</center></th>
 			<th><center>Contact Phone</center></th>
+                        <th><center>State</center></th>
 			<th><center>Action</center></th>
 		</tr>
 	</thead>
@@ -33,11 +34,16 @@
                         <td><center>{{ user.eps }}</center></td>
                         <td><center>{{ user.contactname }}</center></td>
 			<td><center>{{ user.contactphone }}</center></td>
+                        <td><center>
+                            {% if user.active == 1 %}
+                                <span class="glyphicon glyphicon-ok text-success"> Active</span>
+                            {% elseif user.active == 0 %}
+                                <span class="glyphicon glyphicon-time text-danger"> Waiting</span>
+                            {% endif %}
+                        </center></td>
                         <td>
-                            <a href="#" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
-                            <p></p>
-                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-                        </td>
+                            <a href="{{ path('rac_Gnj_view', {id: user.id} ) }}" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
+                       </td>
 
 		</tr>
 	</tbody>
