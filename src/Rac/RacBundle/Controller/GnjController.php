@@ -36,6 +36,8 @@ class GnjController extends Controller
     }
     
     
+// funcion crear usuario
+    
   public function gnjaddAction()
   {
    
@@ -55,8 +57,17 @@ class GnjController extends Controller
         $form->handleRequest($request);
     
         if($form->isValid()) {
+            
+            // subir imagen
+            /*
+            $file=$form["photo"]->getData();
+            $ext=$file->getExtension();
+            $file_name=time().".".$ext;
+            $file->move('uploads', $file_name);
+            */
+            // subir imagen
            
-           $Gnj->setPhoto('User.png');
+           $Gnj->setPhoto('user.png');
            $em = $this->getDoctrine()->getManager();
            $em->persist($Gnj);
            $em->flush();
@@ -72,6 +83,7 @@ class GnjController extends Controller
         
     }
     
+// funcion ver usuario en especifico
     
     public function gnjviewAction($id)
     {
@@ -86,12 +98,66 @@ class GnjController extends Controller
         
         return $this->render('RacRacBundle:Ganj:gnjview.html.twig',  array('user'=> $gnj));
     }
+    
+    
+// funcion editar un usuario
   
-  
+  public function gnjeditAction($id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $gnj = $em->getRepository('RacRacBundle:Gnj')->find($id);
+      
+      if(!$gnj)
+      {
+          throw $this->createNotFoundException('Usuario no Encontrado');
+      }
+      
+     
+      $form = $this->createEditForm($gnj);
+      return $this->render('RacRacBundle:Ganj:gnjedit.html.twig', array('gnj'=> $gnj, 'form' => $form->createView()));
+      
+    }
+    
+    
+    
+ public function gnjupdateAction($id, Request $request)
+    {
+     $em = $this->getDoctrine()->getManager();
+     $gnj=$em->getRepository('RacRacBundle:Gnj')->find($id);
+     
+     if(!$gnj)
+      {
+          throw $this->createNotFoundException('Usuario no Encontrado');
+      }
+      
+      $form=$this->createEditForm($gnj);
+      $form->handleRequest($request);
+
+      if($form->isSubmitted() && $form->isValid())
+      {
+           
+        $em->flush();
+        $this->addFlash('alertadd', 'User has been success modified.');
+        return $this->redirectToRoute('rac_Gnj_edit', array('id' => $gnj->getId() ));
+      }
+      return $this->render('RacRacBundle:Ganj:gnjedit.html.twig', array('gnj'=> $gnj, 'form' => $form->createView()));
+    }
+    
+    
   
   
   
   // funciones privadas
+    
+ private function createEditForm(Gnj $entity)
+    {
+        $form = $this->createForm(new GnjType(), $entity, array(
+            'action' => $this->generateUrl('rac_Gnj_update', array(
+            'id' => $entity->getId())), 
+            'method' => 'PUT'
+            ));
+        return $form;       
+    }
   
   private function createCreateForm(Gnj $entity)
     {
@@ -101,6 +167,9 @@ class GnjController extends Controller
             ));
         return $form;
     }
+    
+    
+     
     
  // fin de controlador 
 }

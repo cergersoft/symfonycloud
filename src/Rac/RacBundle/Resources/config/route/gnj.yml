@@ -14,3 +14,12 @@ rac_Gnj_create:
 rac_Gnj_view:
     path:     /gnjview/{id}
     defaults: { _controller: RacRacBundle:Gnj:gnjview }
+
+rac_Gnj_edit:
+    path:     /gnjedit/{id}
+    defaults: { _controller: RacRacBundle:Gnj:gnjedit }
+    
+rac_Gnj_update:
+    path:     /gnjupdate/{id}
+    defaults: { _controller: RacRacBundle:Gnj:gnjupdate }
+    methods: [POST, PUT]

@@ -24,6 +24,7 @@ class GnjType extends AbstractType
             ->add('phone')
             ->add('contactname')
             ->add('contactphone')
+            //->add('photo')
             ->add('annexed')
             ->add('eps')
             ->add('active')

@@ -88,7 +88,7 @@
       
       {#
       <div class="form-group">
-        {{ form_widget(form.photo, {'type' : 'file'} ) }}
+        {{ form_widget(form.photo ) }}
        <span class="text-danger">{{ form_errors(form.annexed) }}</span>
       </div>
       #}
@@ -116,3 +116,4 @@
 </div>
     
 {%endblock %}
+
