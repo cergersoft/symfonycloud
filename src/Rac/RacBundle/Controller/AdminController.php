@@ -44,7 +44,7 @@ class AdminController extends Controller
     $user = new user();
     $form = $this->createCreateForm($user);
      
-    return $this->render('RacRacBundle:Admin:add.html.twig', array('pagination' => $pagination, 'form' => $form->createView()));  
+    return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('pagination' => $pagination, 'form' => $form->createView()));  
   }
   
   public function createAction(Request $request)
@@ -70,10 +70,30 @@ class AdminController extends Controller
              
         }
         
-        return $this->render('RacRacBundle:Admin:add.html.twig', array('form' => $form->createView()));
+        return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('form' => $form->createView()));
         
     }
   
+    public function editAction()
+    {
+        
+        return new Response('esta es la pagina para editar');
+        
+    }
+    
+    public function viewAction($id)
+    {
+        $em= $this->getDoctrine()->getRepository('RacRacBundle:User');
+        $view = $em->find($id);
+        
+        if(!$view)
+      {
+          throw $this->createNotFoundException('Usuario no Encontrado');
+      }
+        
+        return $this->render('RacRacBundle:Admin:adminview.html.twig', array('view' => $view));
+        
+    }
   
   
   
@@ -89,6 +109,40 @@ class AdminController extends Controller
         return $form;
     }
     
-  
+
+      private function deleteUser($role, $em, $user)
+    {
+        if($role == 'ROLE_USER')
+        {
+            $em->remove($user);
+            $em->flush();
+            
+            $message = $this->get('The user has been deleted.');
+            $removed = 1;
+            $alert = 'mensaje';
+        }
+        
+        elseif($role == 'ROLE_ADMIN')
+        
+        {
+            $message = $this->get('Error while trying to delete this user.');
+            $removed = 0;
+            $alert = 'error';
+        } 
+        
+        elseif($role == 'ROLE_SUADMIN')
+        
+        {
+            $message = $this->get('Error while trying to delete this user.');
+            $removed = 0;
+            $alert = 'error';  
+        }
+        
+        return array('removed' => $removed, 'message' => $message, 'alert' => $alert);
+    }
+    
+    
+    
+ // fin del controller
   
 }

@@ -2,7 +2,9 @@
 
 {% block body %}
   {{ parent() }}
-  
+  <div class="container">
+      {{ include('RacRacBundle:Ganj:message/alertsuccess.html.twig') }}
+  </div>
  <div class="container table-responsive">
      
      <h3>Registered Users <strong><span class="label label-info" id="total">{{ pagination.getTotalItemCount }}</span> </strong></h3>
@@ -13,7 +15,6 @@
 		<tr>
 			<th><center>Name</center></th>
 			<th><center>Identification Card</center></th>
-			<th><center>Birthdate</center></th>
 			<th><center>Address</center></th>
                         <th><center>Phone</center></th>
 			<th><center>Eps</center></th>
@@ -25,10 +26,9 @@
 	</thead>
 {% for user in pagination %}
 	<tbody>
-		<tr>
-			<td><center>{{ user.firstname }} {{ user.lastname }}</center></td>
+		<tr data-id="{{ user.id }}">
+                    <td><a href="{{ path('rac_Gnj_view', {id: user.id} ) }}"><center>{{ user.firstname }} {{ user.lastname }}</center></a></td>
 			<td><center>{{ user.identificationcard }}</center></td>
-			<td><center>{{ user.birthdate }}</center></td>
                         <td><center>{{ user.address }}</center></td>
 			<td><center>{{ user.phone }}</center></td>
                         <td><center>{{ user.eps }}</center></td>
@@ -42,8 +42,9 @@
                             {% endif %}
                         </center></td>
                         <td>
-                            <a href="{{ path('rac_Gnj_view', {id: user.id} ) }}" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a>
-                       </td>
+                            <a href="{{ path('rac_Gnj_edit', {id: user.id} ) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+                        </td>
+                       
 
 		</tr>
 	</tbody>

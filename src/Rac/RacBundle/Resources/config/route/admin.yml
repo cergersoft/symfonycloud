@@ -12,5 +12,9 @@ rac_rac_create:
     methods: POST
     
 rac_rac_view:
-    path:     /view
+    path:     /view/{id}
     defaults: { _controller: RacRacBundle:Admin:view }
+    
+rac_rac_edit:
+    path:     /edit
+    defaults: { _controller: RacRacBundle:Admin:edit }

@@ -95,8 +95,8 @@ class GnjController extends Controller
       {
           throw $this->createNotFoundException('Usuario no Encontrado');
       }
-        
-        return $this->render('RacRacBundle:Ganj:gnjview.html.twig',  array('user'=> $gnj));
+        $deleteForm = $this->createCustomForm($gnj->getId(), 'DELETE', 'rac_Gnj_delete');
+        return $this->render('RacRacBundle:Ganj:gnjview.html.twig',  array('user'=> $gnj, 'delete_form' => $deleteForm->createView()));
     }
     
     
@@ -144,6 +144,33 @@ class GnjController extends Controller
     }
     
     
+// funcion borrar usuario
+    
+    
+  public function gnjdeleteAction(Request $request, $id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $gnj = $em->getRepository('RacRacBundle:Gnj')->find($id);
+      
+        if(!$gnj)
+      {
+          throw $this->createNotFoundException('Usuario no Encontrado');
+      }
+      
+      //$form = $this->createDeleteform($user);
+      $form = $this->createCustomForm($gnj->getId(), 'DELETE', 'rac_Gnj_delete');
+      $form->handleRequest($request);
+      
+      if($form->isSubmitted() && $form->isValid())
+      {
+         
+       $em->remove($gnj);
+       $em->flush();
+       $this->addFlash('alertadd', 'The user has been deleted.');
+       return $this->redirectToRoute('rac_Gnj_homepage');
+      
+    }
+  }  
   
   
   
@@ -169,7 +196,14 @@ class GnjController extends Controller
     }
     
     
-     
+  private function createCustomForm($id, $method, $route)
+     {
+      return $this->createFormBuilder()
+      ->setAction($this->generateUrl($route, array('id' => $id)))
+      ->setMethod($method)
+      ->getform();
+     }
+         
     
  // fin de controlador 
 }

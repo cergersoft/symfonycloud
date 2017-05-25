@@ -1,0 +1,118 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+  {{ parent() }}
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+                <div class="col-md-7">
+                    
+                  <h2> Ficha Persona </h2>
+                  <hr>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           Nombre: 
+                        </dt>
+                         <dd>
+                           {{ view.fristname }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Apellido: 
+                        </dt>
+                         <dd>
+                           {{ view.lastname }}  
+                         </dd>
+                          
+                    </dl>
+                      
+                  </div>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           E-mail: 
+                        </dt>
+                         <dd>
+                           {{ view.mail }}  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           Username: 
+                        </dt>
+                         <dd>
+                           {{ view.username }}  
+                         </dd>
+                         
+                    </dl>
+                      
+                  </div>
+                  
+                  <div class="col-md-4">
+                      
+                      <dl>
+                        <dt>
+                           Rol: 
+                        </dt>
+                         <dd>
+                            {% if view.role == 'ROLE_ADMIN' %}
+                                <strong>Administrator</strong>
+                            {% elseif view.role == 'ROLE_USER' %}
+                                <strong>User</strong>
+                            {% elseif view.role == 'ROLE_SUADMIN' %}
+                                <strong>Super Admin</strong>
+                            {% endif %} 
+                         </dd> 
+                         <hr>
+                         
+                        <dt>
+                           Estado: 
+                        </dt>
+                        <dd>
+                           {% if view.active == 0 %}
+                             <span class="glyphicon glyphicon-time text-danger" id="glyphicon-{{view.id}}"> Waiting</span>
+                           {% elseif view.active == 1 %}
+                             <span class="glyphicon glyphicon-ok text-success" id="glyphicon-{{view.id}}"> Active</span>
+                           {% endif %} 
+                        </dd>
+                        <hr>
+                         <dt>
+                           Created: 
+                        </dt>
+                         <dd>
+                           {{ view.createAt|date('d-M-Y H:i') }}  
+                         </dd>
+                        
+                    </dl>
+                      
+                  </div>
+                       
+                </div>
+                        
+                        <div class="col-md-2">
+                            
+                            <h2>Actions</h2>
+                            <center>
+                                <hr>
+                                {#
+                             <div class="form-group">    
+                            <a href="{{ path('rac_Admin_edit', {id: view.id} ) }}" class="btn btn-block btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                             </div>
+                             
+                             <div class="form-group">
+                            </div>{{ include('RacRacBundle:Ganj:forms/form.html.twig', {form: delete_form, message: 'Are you sure the delete ?'|trans, id: 'form-delete'}) }}
+                            #}
+                            </center>
+                        </div>
+	</div>
+</div>
+
+
+{%endblock %}

@@ -79,7 +79,7 @@
 {% for user in pagination %}
             <tbody>
               <tr data-id="{{ user.id }}">
-                <td><center>{{ user.fristname }}</center></td>
+                  <td><center><a href="{{ path('rac_rac_view', {id: user.id}) }}">{{ user.fristname }}</a></center></td>
                 <td><center>{{ user.lastname }}</center></td>
                 <td><center>
                     {% if user.active == 1 %}
@@ -88,7 +88,10 @@
                         <span class="glyphicon glyphicon-time text-danger"> Waiting</span>
                     {% endif %}</center>
                 </td>
-                <td><center><a href="{{ path('rac_rac_view', {id: user.id}) }}" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></a></center></td>
+                <td><center>
+                    <a href="{{ path('rac_rac_edit', {id: user.id}) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="{{ path('rac_rac_edit', {id: user.id}) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+                </center></td>
               </tr>
             </tbody>
 {% endfor %}

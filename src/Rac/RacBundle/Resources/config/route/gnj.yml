@@ -23,3 +23,8 @@ rac_Gnj_update:
     path:     /gnjupdate/{id}
     defaults: { _controller: RacRacBundle:Gnj:gnjupdate }
     methods: [POST, PUT]
+    
+rac_Gnj_delete:
+    path:     /gnjupdate/{id}
+    defaults: { _controller: RacRacBundle:Gnj:gnjdelete }
+    methods: [POST, DELETE]
