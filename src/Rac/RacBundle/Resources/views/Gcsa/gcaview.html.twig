@@ -1,10 +1,157 @@
 {% extends "layout.html.twig" %}
-    
 
 {% block body %}
-    {{ parent() }}
+  {{ parent() }}
     
-    <h2> pagina para ver a los bandidos  </h2>
+    <div clas="container">
+        <div class="row">
+            
+            
+            <div class="col-md-1"></div>
+            
+            <div class="col-md-8">
+                
+                <center> <h2>View User </h2> </center>
+            <hr>
+                
+            <div class="col-md-4">
+                <dl>
+                        
+                        <dt>
+                         <center>Nombre:</center> 
+                        </dt>
+                         <dd>
+                           <center>{{ user.firstname }}</center>  
+                         </dd> 
+                         <hr>
+                         <dt>
+                           <center>Apellido: </center>
+                        </dt>
+                         <dd>
+                           <center>{{ user.lastname }}  </center>
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center>Cedula: </center>
+                        </dt>
+                         <dd>
+                           <center>{{ user.identificationcard }}  </center>
+                         </dd> 
+                         <hr>
+                         <dt>
+                           <center> Cumpleaños: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.birthdate }}  </center>
+                         </dd> 
+                    </dl>
+            </div>
+               
+                         <div class="col-md-4">
+                             <dl>
+                        <dt>
+                           <center> Address: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.address }}  </center>
+                         </dd> 
+                         <hr>
+                         <dt>
+                          <center> E-mail: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.mail }}  </center>
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> Phone: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.phone }}  </center>
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> Commune: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.commune }}  </center>
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> Created User: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.createAt|date('d-M-Y H:i') }}  </center>
+                         </dd>
+                    </dl>
+                         </div>
+               
+                         <div class="col-md-4">
+                             <dl>
+                        <dt>
+                           <center> Vehicle: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.vehicle }}  </center>
+                         </dd> 
+                         <hr>
+                         <dt>
+                           <center> Eps: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.eps }} </center> 
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> Annexed: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.annexed }} </center> 
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> State: </center>
+                        </dt>
+                         <dd>
+                           <center> {% if user.active == 0 %}
+                             <span class="glyphicon glyphicon-time text-danger" id="glyphicon-{{user.id}}"> Waiting</span>
+                           {% elseif user.active == 1 %}
+                             <span class="glyphicon glyphicon-ok text-success" id="glyphicon-{{user.id}}"> Active</span>
+                           {% endif %}  </center>
+                         </dd>
+                         <hr>
+                         <dt>
+                           <center> Balances: </center>
+                        </dt>
+                         <dd>
+                           <center> {{ user.balances }}  </center>
+                         </dd>
+                    </dl>
+                         </div>
+                
+            </div>
+            
+            <div class="col-md-2">
+                <h2><center> Image </center></h2>
+                <hr>
+                <dd>
+                  <center><img src="{{ asset('GCSA/'~user.photo)}}" height="150px" width="120px"></center> 
+                </dd> 
+                <hr>
+                <h2><center> Actions </center></h2>
+                <hr>
+                
+                <div class="form-group">    
+                  <a href="{{ path('rac_Gca_edit', {id: user.id} ) }}" class="btn btn-block btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit </a>
+                </div>
+                <div class="form-group">    
+                  <a href="#" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-erase"></span> Delete </a>
+                </div>
+                
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div<
     
-    {{ user.firstname }}
+    
 {% endblock %}

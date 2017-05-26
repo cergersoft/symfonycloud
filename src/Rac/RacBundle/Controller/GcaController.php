@@ -84,6 +84,15 @@ class GcaController extends Controller
        
        return $this->render('RacRacBundle:Gcsa:gcaview.html.twig', array('user' => $gca));
    }
+   
+   
+   public function editAction($id)
+   {
+       $emm = $this->getDoctrine()->getmanager();
+       $gca= $emm->getRepository('RacRacBundle:GcaBundle')->find($id);
+       
+       return $this->render('RacRacBundle:Gcsa:gcaedit.html.twig', array('user' => $gca));
+   }
     
     
 //funciones privadas

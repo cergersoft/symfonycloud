@@ -37,7 +37,7 @@
                                 <span class="glyphicon glyphicon-time text-danger"> Waiting</span>
                             {% endif %}
                         </center></td>
-                        <td><center> <a href="" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> </center></td>
+                        <td><center> <a href="{{ path('rac_Gca_edit', {id: user.id} ) }}" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> </center></td>
                     </tr>
                 </tbody>
 {% endfor %}

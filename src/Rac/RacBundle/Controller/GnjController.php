@@ -27,7 +27,7 @@ class GnjController extends Controller
         $pagination=$paginator->paginate(
         $users, $request->query->getInt('page', 1),
         6
-                );
+         );
       
       // paginador
         

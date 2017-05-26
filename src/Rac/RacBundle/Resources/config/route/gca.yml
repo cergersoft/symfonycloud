@@ -16,5 +16,5 @@ rac_Gca_view:
     defaults: { _controller: RacRacBundle:Gca:view }
     
 rac_Gca_edit:
-    path:     /gcaedit
+    path:     /gcaedit/{id}
     defaults: { _controller: RacRacBundle:Gca:edit }
