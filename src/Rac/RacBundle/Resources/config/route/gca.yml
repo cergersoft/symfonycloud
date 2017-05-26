@@ -1,0 +1,20 @@
+rac_Gca_homepage:
+    path:     /gca
+    defaults: { _controller: RacRacBundle:Gca:home }
+
+rac_Gca_add:
+    path:     /gcaadd
+    defaults: { _controller: RacRacBundle:Gca:add }
+    
+rac_Gca_create:
+    path:     /gcacreate
+    defaults: { _controller: RacRacBundle:Gca:create }
+    methods: POST
+    
+rac_Gca_view:
+    path:     /gcaview/{id}
+    defaults: { _controller: RacRacBundle:Gca:view }
+    
+rac_Gca_edit:
+    path:     /gcaedit
+    defaults: { _controller: RacRacBundle:Gca:edit }

@@ -3,3 +3,6 @@ rac_rac_user:
     
 rac_rac_gnj:
     resource: "@RacRacBundle/Resources/config/route/gnj.yml"
+    
+rac_rac_gca:
+    resource: "@RacRacBundle/Resources/config/route/gca.yml"

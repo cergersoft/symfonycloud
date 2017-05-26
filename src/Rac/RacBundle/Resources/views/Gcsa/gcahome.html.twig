@@ -1,0 +1,53 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+  
+    <div class="container">
+      <div class="row">
+          <div class="table">
+              <h2> List User </h2>
+                  <hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><center>Name</center></th>
+                        <th><center>Identification Card</center></th>
+                        <th><center>Address</center></th>
+                        <th><center>Phone</center></th>
+                        <th><center>Commune</center></th>
+                        <th><center>Vehicle</center></th>
+                        <th><center>State</center></th>
+                        <th><center>Action</center></th>
+                    </tr>
+                </thead>
+{% for user in pagination %}
+                <tbody>
+                    <tr>
+                        <td><center> <a href="{{ path('rac_Gca_view', {id: user.id} ) }}"> {{ user.firstname }} {{ user.lastname }}</a></center></td>
+                        <td><center> {{ user.identificationcard }} </center></td>
+                        <td><center> {{ user.address }} </center></td>
+                        <td><center> {{ user.phone }} </center></td>
+                        <td><center> {{ user.commune }} </center></td>
+                        <td><center> {{ user.id }} </center></td>
+                        <td><center> 
+                            {% if user.active == 1 %}
+                                <span class="glyphicon glyphicon-ok text-success"> Active</span>
+                            {% elseif user.active == 0 %}
+                                <span class="glyphicon glyphicon-time text-danger"> Waiting</span>
+                            {% endif %}
+                        </center></td>
+                        <td><center> <a href="" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></a> </center></td>
+                    </tr>
+                </tbody>
+{% endfor %}
+            </table>
+
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+
+
+
