@@ -16,5 +16,10 @@ rac_rac_view:
     defaults: { _controller: RacRacBundle:Admin:view }
     
 rac_rac_edit:
-    path:     /edit
+    path:     /edit/{id}
     defaults: { _controller: RacRacBundle:Admin:edit }
+    
+rac_rac_update:
+    path:     /update/{id}
+    defaults: { _controller: RacRacBundle:Admin:update }
+    methods: [POST, PUT]
