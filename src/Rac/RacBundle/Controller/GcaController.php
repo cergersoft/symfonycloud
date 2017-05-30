@@ -53,16 +53,8 @@ class GcaController extends Controller
         
         if($form->isValid())
         {
-          // subir imagen
-            
-            $file=$form["photo"]->getData();
-            $ext=$file->guessExtension();
-            $file_name=time().".".$ext;
-            $file->move('GCSA', $file_name);
            
-            // subir imagen
-            
-            $gca->setPhoto($file_name);
+            $gca->setPhoto('user.png');
             $gca->setBalances(0000);
             $em = $this->getDoctrine()->getManager();
             $em->persist($gca);
@@ -82,7 +74,8 @@ class GcaController extends Controller
        $reposity = $this->getDoctrine()->getRepository('RacRacBundle:GcaBundle');
        $gca=$reposity->find($id);
        
-       return $this->render('RacRacBundle:Gcsa:gcaview.html.twig', array('user' => $gca));
+       $deleteForm=$this->createCustomForm($gca->getId(), 'DELETE', 'rac_Gca_delete');
+       return $this->render('RacRacBundle:Gcsa:gcaview.html.twig', array('user' => $gca, 'delete_form' => $deleteForm->createView()));
    }
    
    
@@ -115,6 +108,26 @@ class GcaController extends Controller
       return $this->render('RacRacBundle:Gcsa:gcahome.html.twig', array('user' => $update));
        
    }
+   
+   
+   public function deleteAction(Request $request, $id)
+   {
+       $emm = $this->getDoctrine()->getManager();
+       $borrar = $emm->getRepository('RacRacBundle:GcaBundle')->find($id);
+       
+       $form=$this->createCustomForm($borrar->getId(), 'DELETE', 'rac_Gca_delete');
+       $form->handleRequest($request);
+       
+       if($form->isSubmitted() && $form->isValid())
+       {
+           $emm->remove($borrar);
+           $emm->flush();
+           
+           $this->addFlash('alertadd', 'Successfully deleted User');
+          return $this->redirectToRoute('rac_Gca_homepage');
+           
+       }
+   }
     
     
 //funciones privadas
@@ -135,6 +148,15 @@ class GcaController extends Controller
                 'method' => 'PUT'
             ));
         return $form;
+    }
+    
+    
+    private function createCustomForm($id, $method, $route)
+    {
+        return $this->createFormBuilder()
+        ->setAction($this->generateUrl($route, array('id' => $id)))
+        ->setMethod($method)
+        ->getForm();
     }
     
 // fin de controlador 

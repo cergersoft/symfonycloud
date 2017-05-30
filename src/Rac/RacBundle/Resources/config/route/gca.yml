@@ -23,3 +23,8 @@ rac_Gca_update:
     path:     /gcaupdate/{id}
     defaults: { _controller: RacRacBundle:Gca:update }
     methods: [POST, PUT]
+    
+rac_Gca_delete:
+    path:     /gcadelete/{id}
+    defaults: { _controller: RacRacBundle:Gca:delete }
+    methods: [POST, DELETE]

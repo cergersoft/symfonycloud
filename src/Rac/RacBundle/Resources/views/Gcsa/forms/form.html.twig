@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+
+{{ form_widget(form) }}
+
+{% if with_submit is not defined or with_submit == true %}
+    
+    <button type="submit" class="btn btn-block btn-danger" onclick="confirmDelete()"><span class="glyphicon glyphicon-erase"></span> User Deleted </button>
+    
+{% endif %}
+
+{{ form_end(form) }}

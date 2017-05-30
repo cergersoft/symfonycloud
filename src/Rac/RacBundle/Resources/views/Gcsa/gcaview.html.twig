@@ -145,7 +145,7 @@
                   <a href="{{ path('rac_Gca_edit', {id: user.id} ) }}" class="btn btn-block btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit </a>
                 </div>
                 <div class="form-group">    
-                  <a href="#" class="btn btn-block btn-danger"><span class="glyphicon glyphicon-erase"></span> Delete </a>
+                  {{ include('RacRacBundle:Gcsa:forms/form.html.twig', {form : delete_form, message: 'Are you sure the delete ?'} ) }}
                 </div>
                 
             </div>
