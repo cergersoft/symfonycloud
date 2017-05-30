@@ -88,10 +88,32 @@ class GcaController extends Controller
    
    public function editAction($id)
    {
-       $emm = $this->getDoctrine()->getmanager();
-       $gca= $emm->getRepository('RacRacBundle:GcaBundle')->find($id);
+       $emm = $this->getDoctrine()->getRepository('RacRacBundle:GcaBundle');
+       $gca= $emm->find($id);
        
-       return $this->render('RacRacBundle:Gcsa:gcaedit.html.twig', array('user' => $gca));
+       $form = $this->createEditForm($gca);
+       return $this->render('RacRacBundle:Gcsa:gcaedit.html.twig', array('user' => $gca, 'form'=>$form->createView()));
+   }
+   
+   
+   public function updateAction($id, Request $request)
+   {
+      
+       $em = $this->getDoctrine()->getManager();
+       $update = $em->getRepository('RacRacBundle:GcaBundle')->find($id);
+       
+       $form = $this->createEditForm($update);
+       $form->handleRequest($request);
+       
+      if($form->isSubmitted() && $form->isValid())
+      {
+          $em->flush();
+          $this->addFlash('alertadd', 'Successfully Updated User');
+          return $this->redirectToRoute('rac_Gca_homepage');
+      }
+       
+      return $this->render('RacRacBundle:Gcsa:gcahome.html.twig', array('user' => $update));
+       
    }
     
     
@@ -104,7 +126,16 @@ class GcaController extends Controller
                 'method' => 'POST'
             ));
         return $form;
-    }   
+    }
+    
+    private function createEditForm(GcaBundle $entity)
+    {
+        $form = $this->createForm(new GcaBundleType(), $entity, array(
+                'action' => $this->generateUrl('rac_Gca_update', array('id' => $entity->getId())),
+                'method' => 'PUT'
+            ));
+        return $form;
+    }
     
 // fin de controlador 
 }
