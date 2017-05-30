@@ -74,12 +74,13 @@
     </div>
     
     <div class="col-md-3">
-      
+      {#
       <div class="form-group">
           {{ form_label(form.photo) }}
           {{form_widget(form.photo)}}
           <span class="text-danger">{{ form_errors(form.photo) }}</span>
       </div>
+     #}
       <hr>
            {{ form_widget(form.save, { 'label' : 'Register person', 'attr' : { 'class' : 'btn btn-info' } }) }}
       

@@ -5,6 +5,7 @@ namespace Rac\RacBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+//use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class GcaBundleType extends AbstractType
 {
@@ -21,7 +22,10 @@ class GcaBundleType extends AbstractType
             ->add('mail', 'email')
             ->add('address')
             ->add('phone')
-            ->add('photo', 'file')
+            /*->add('photo', FileType::class, array(
+                "attr" => array("class" => "form-control" )
+            ))*/
+            //->add('photo')
             ->add('birthdate')
             ->add('annexed')
             ->add('eps')
