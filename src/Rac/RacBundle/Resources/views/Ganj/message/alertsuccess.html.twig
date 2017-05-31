@@ -6,4 +6,16 @@
         </div>
       </div>
     </div>
+
+{% elseif flashMessage in app.session.flashbag.get('alertdang') %}
+    
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+        <div class="container">
+         <span class="glyphicon glyphicon-ok"></span> {{ flashMessage }}
+        </div>
+      </div>
+    </div>
+         
+         
 {% endfor %}

@@ -139,7 +139,7 @@ class AdminController extends Controller
           $emm->remove($delete);
           $emm->flush();
           
-          $this->addFlash('alertadd', 'User Successfully Deleted');
+          $this->addFlash('alertdang', 'User Successfully Deleted');
           return $this->redirectToRoute('rac_rac_add');
       }
     }
