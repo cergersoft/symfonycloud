@@ -101,11 +101,11 @@
                             <h2>Actions</h2>
                             <center>
                                 <hr>
-                                {#
+                                
                              <div class="form-group">    
-                            <a href="{{ path('rac_Admin_edit', {id: view.id} ) }}" class="btn btn-block btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+                            <a href="{{ path('rac_rac_edit', {id: view.id} ) }}" class="btn btn-block btn-success"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
                              </div>
-                             
+                             {#
                              <div class="form-group">
                             </div>{{ include('RacRacBundle:Ganj:forms/form.html.twig', {form: delete_form, message: 'Are you sure the delete ?'|trans, id: 'form-delete'}) }}
                             #}

@@ -20,6 +20,7 @@ class UserType extends AbstractType
             ->add('username')
             ->add('mail', 'email')
             ->add('password', 'password')
+            ->add('role', 'choice', array('choices'=> array('ROLE_USER' => 'User', 'ROLE_ADMIN' => 'Administrator', 'ROLE_SUADMIN' => 'Super Admin'), 'placeholder'=>'Select Role'))
             ->add('active', 'checkbox')
             ->add('save', 'submit', array('label' => 'save User'))
         ;

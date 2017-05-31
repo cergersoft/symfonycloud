@@ -3,6 +3,7 @@
 namespace Rac\RacBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -60,7 +61,8 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="user_role", type="string", length=30)
+     * @ORM\Column(name="user_role", type="string",columnDefinition="ENUM('ROLE_ADMIN', 'ROLE_USER', 'ROLE_SUADMIN')", length=30)
+     * @Assert\Choice(choices = {"ROLE_ADMIN", "ROLE_USER", "ROLE_SUADMIN"})
      */
     private $role;
 

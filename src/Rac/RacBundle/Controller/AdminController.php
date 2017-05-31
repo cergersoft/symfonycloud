@@ -57,7 +57,6 @@ class AdminController extends Controller
         if($form->isValid()) {
            
            
-           $user->setRole('ROLE_USER');
            $em = $this->getDoctrine()->getManager();
            $em->persist($user);
            $em->flush();
@@ -99,6 +98,32 @@ class AdminController extends Controller
         return $this->render('RacRacBundle:Admin:adminview.html.twig', array('view' => $view));
         
     }
+    
+    
+    public function updateAction($id, Request $request)
+    {
+        $emm = $this->getDoctrine()->getManager();
+        $update = $emm->getRepository('RacRacBundle:User')->find($id);
+        
+        $form = $this->createEditForm($update);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $password = $form->get('password')->getData();
+            
+            if(empty($password))
+            {
+                $recoverpass = $this->recoverPass($id);
+                $update->setPassword($recoverpass[0]['password']);
+            }
+            
+            $emm->flush();
+            $this->addFlash('alertadd', 'User Successfully Edited');
+            return $this->redirectToRoute('rac_rac_add');
+        }
+      return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('user' => $update));
+    }
   
   
   
@@ -135,7 +160,7 @@ class AdminController extends Controller
                  WHERE p.id = :id'
                 )->setParameter('id', $id);
         
-        $currentPass = $query->gertresult();
+        $currentPass = $query->getresult();
         
         return $currentPass;
     }
