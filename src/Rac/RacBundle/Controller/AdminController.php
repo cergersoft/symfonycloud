@@ -119,7 +119,7 @@ class AdminController extends Controller
             }
             
             $emm->flush();
-            $this->addFlash('alertadd', 'User Successfully Edited');
+            $this->addFlash('alertedit', 'User Successfully Edited');
             return $this->redirectToRoute('rac_rac_add');
         }
       return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('user' => $update));
