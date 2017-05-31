@@ -7,7 +7,9 @@
       </div>
     </div>
 
-{% elseif flashMessage in app.session.flashbag.get('alertdang') %}
+{% endfor %}        
+         
+{% for flashMessage in app.session.flashbag.get('alertdang') %}
     
     <div class="container">
         <div class="alert alert-danger" role="alert">
