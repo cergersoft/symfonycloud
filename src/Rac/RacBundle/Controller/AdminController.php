@@ -94,8 +94,8 @@ class AdminController extends Controller
       {
           throw $this->createNotFoundException('Usuario no Encontrado');
       }
-        
-        return $this->render('RacRacBundle:Admin:adminview.html.twig', array('view' => $view));
+        $deleteForm = $this->createCustomForm($view->getId(), 'DELETE', 'rac_rac_delete');
+        return $this->render('RacRacBundle:Admin:adminview.html.twig', array('view' => $view, 'delete_form' => $deleteForm->createView()));
         
     }
     
@@ -124,13 +124,32 @@ class AdminController extends Controller
         }
       return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('user' => $update));
     }
+    
+    
+    public function deleteAction(Request $request, $id)
+    {
+      $emm = $this->getDoctrine()->getManager();
+      $delete = $emm->getRepository('RacRacBundle:User')->find($id);
+      
+      $form =$this->createCustomForm($delete->getId(), 'DELETE', 'rac_rac_delete');
+      $form->handleRequest($request);
+      
+      if($form->isSubmitted() && $form->isValid())
+      {
+          $emm->remove($delete);
+          $emm->flush();
+          
+          $this->addFlash('alertadd', 'User Successfully Deleted');
+          return $this->redirectToRoute('rac_rac_add');
+      }
+    }
   
   
   
   
   // funciones privadas
   
-  private function createCreateForm(user $entity)
+  private function createCreateForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
                 'action' => $this->generateUrl('rac_rac_create'),
@@ -147,6 +166,14 @@ class AdminController extends Controller
             'method' => 'PUT'
         ));
      return $form;
+    }
+    
+    private function createCustomForm($id, $method, $route)
+    {
+      return $this->createFormBuilder()
+        ->setAction($this->generateUrl($route, array('id' => $id)))
+        ->setMethod($method)
+        ->getForm();
     }
 
 // funcion para recupera password

@@ -23,3 +23,8 @@ rac_rac_update:
     path:     /update/{id}
     defaults: { _controller: RacRacBundle:Admin:update }
     methods: [POST, PUT]
+
+rac_rac_delete:
+    path:     /delete/{id}
+    defaults: { _controller: RacRacBundle:Admin:delete }
+    methods: [POST, DELETE]
