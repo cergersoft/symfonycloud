@@ -137,7 +137,7 @@ class GnjController extends Controller
       {
            
         $em->flush();
-        $this->addFlash('alertadd', 'User has been success modified.');
+        $this->addFlash('alertedit', 'User has been success modified.');
         return $this->redirectToRoute('rac_Gnj_edit', array('id' => $gnj->getId() ));
       }
       return $this->render('RacRacBundle:Ganj:gnjedit.html.twig', array('gnj'=> $gnj, 'form' => $form->createView()));
@@ -166,7 +166,7 @@ class GnjController extends Controller
          
        $em->remove($gnj);
        $em->flush();
-       $this->addFlash('alertadd', 'The user has been deleted.');
+       $this->addFlash('alertdang', 'The user has been deleted.');
        return $this->redirectToRoute('rac_Gnj_homepage');
       
     }

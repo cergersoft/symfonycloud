@@ -101,7 +101,7 @@ class GcaController extends Controller
       if($form->isSubmitted() && $form->isValid())
       {
           $em->flush();
-          $this->addFlash('alertadd', 'Successfully Updated User');
+          $this->addFlash('alertedit', 'Successfully Updated User');
           return $this->redirectToRoute('rac_Gca_homepage');
       }
        
@@ -123,7 +123,7 @@ class GcaController extends Controller
            $emm->remove($borrar);
            $emm->flush();
            
-           $this->addFlash('alertadd', 'Successfully deleted User');
+           $this->addFlash('alertdang', 'Successfully deleted User');
           return $this->redirectToRoute('rac_Gca_homepage');
            
        }
