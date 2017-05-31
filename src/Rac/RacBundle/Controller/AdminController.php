@@ -123,6 +123,22 @@ class AdminController extends Controller
         ));
      return $form;
     }
+
+// funcion para recupera password
+    
+    private function recoverPass($id)
+    {
+        $emm = $this->getDoctrine()->getManager();
+        $query= $emm->createQuery(
+                'SELECT p.password
+                 FROM RacRacBundle:User p
+                 WHERE p.id = :id'
+                )->setParameter('id', $id);
+        
+        $currentPass = $query->gertresult();
+        
+        return $currentPass;
+    }
     
 
       private function deleteUser($role, $em, $user)
