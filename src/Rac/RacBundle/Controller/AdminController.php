@@ -78,9 +78,9 @@ class AdminController extends Controller
     {
         
         $emm = $this->getDoctrine()->getManager();
-        $edit = $emm->getRepository('RacRacBundle:User');
+        $edit = $emm->getRepository('RacRacBundle:User')->find($id);
         
-        $form=$this->createEditForm($edit);
+        $form = $this->createEditForm($edit);
         
         return $this->render('RacRacBundle:Admin:adminedit.html.twig', array('user' => $edit, 'form' => $form->createView()));
         
@@ -115,10 +115,10 @@ class AdminController extends Controller
     }
     
     
-    private function createEditForm(user $entity)
+    private function createEditForm(User $entity)
     {
         $form = $this->createForm(new UserType(), $entity, array(
-           'action' => $this->genetateUrl('rac_rac_update', array('id' => $entity->getId() )),
+           'action' => $this->generateUrl('rac_rac_update', array('id' => $entity->getId() )),
             'method' => 'PUT'
         ));
      return $form;

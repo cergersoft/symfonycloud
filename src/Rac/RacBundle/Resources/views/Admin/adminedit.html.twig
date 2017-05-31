@@ -3,6 +3,58 @@
 {% block body %}
     {{ parent() }}
     
-    {{ user.id }}
+    
+    
+    {{ form_start(form) }}
+    
+    <div class="container">
+	<div class="row">
+		<div class="col-md-3"></div>
+                <div class="col-md-6">
+                    
+                    <div class="form-group">
+                      {{ form_label(form.fristname) }}: 
+                      {{ form_widget(form.fristname) }}
+                      <span class="text-danger">{{ form_errors(form.fristname) }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                      {{ form_label(form.lastname) }}: 
+                      {{ form_widget(form.lastname) }}
+                      <span class="text-danger">{{ form_errors(form.lastname) }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                      {{ form_label(form.username) }}: 
+                      {{ form_widget(form.username) }}
+                      <span class="text-danger">{{ form_errors(form.username) }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                      {{ form_label(form.password) }}: 
+                      {{ form_widget(form.password) }}
+                      <span class="text-danger">{{ form_errors(form.password) }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                      {{ form_label(form.mail) }}: 
+                      {{ form_widget(form.mail) }}
+                      <span class="text-danger">{{ form_errors(form.mail) }}</span>
+                    </div>
+                    
+                    <div class="form-group">
+                      {{ form_label(form.active) }}: 
+                      {{ form_widget(form.active) }}
+                      <span class="text-danger">{{ form_errors(form.active) }}</span>
+                    </div>
+                    
+                </div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+    
+    
+    
+    {{ form_end(form) }}
     
 {% endblock %}
