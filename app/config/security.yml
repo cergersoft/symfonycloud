@@ -50,6 +50,12 @@ security:
         - { path: ^/index, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/gnjadd, roles: ROLE_ADMIN }
-        - { path: ^/gcaadd, roles: ROLE_ADMIN }
-        - { path: ^/add, roles: ROLE_SUADMIN }
+        - { path: ^/Ganj/gnj, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Ganj/gnjadd, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Ganj/gnjedit, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Ganj/gnjview, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Gcsa/gca, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Gcsa/gcaadd, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Gcsa/gcaview, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Gcsa/gcaedit, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Admin/add, roles: ROLE_SUADMIN }
