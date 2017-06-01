@@ -1,0 +1,60 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+
+<div class="bajar1">
+    
+    <div class="container">
+      <div class="row">
+      
+          <div class="col-md-4"></div>
+          
+          <div class="col-md-4">
+              
+              <h2> Login </h2>
+              <hr>
+              
+               {% if error %}
+                  <div class="text-danger">
+                    <p>
+                      <strong>
+                        {{ error.messageKey }} 
+                      </strong>
+                    </p>
+                  </div>
+                {% endif %}
+                
+              <form action="{{ path('rac_security_login_check') }}" method="post">
+                
+                
+                <div class="form-group">
+                    <center><img src="{{ asset('uploads/user.png')}}" class="img-circle" alt="Cinque Terre" width="114" height="96"></center>
+                </div>
+                
+                <div class="form-group">
+                 <label>Username</label>
+                 <input type="text" class="form-control" name="_username" value="{{ last_username }}">
+                </div>
+
+                <div class="form-group">
+                 <label>Password</label>
+                 <input type="password" class="form-control" name="_password">
+                </div>
+
+                <div class="form-group">
+		 <input type="hidden" value="{{ path('rac_rac_login_home') }}">
+		 <input type="submit" class="btn btn-block btn-warning" value="Login">
+                </div>
+                  
+              </form>
+              
+          </div>
+          
+          <div class="col-md-4"></div>
+          
+      </div>
+    </div>
+</div>
+
+{% endblock %}

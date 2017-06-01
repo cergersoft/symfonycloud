@@ -7,7 +7,7 @@ security:
         our_db_provider:
             entity:
                 class: RacRacBundle:User
-                property: username
+                property: username 
         # in_memory:
             # memory: ~
 
@@ -19,13 +19,13 @@ security:
                 login_path: /login
                 check_path: /login_check
                 # field names for the username and password fields:
-                username_parameter: username
-                password_parameter: password
+                username_parameter: _username
+                password_parameter: _password
             # default_target_path: default_security_target
             # always_use_default_target_path: true
             logout:
                 path:   /logout
-                target: /login
+                target: /index
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -40,3 +40,16 @@ security:
 
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
             #form_login: ~
+            
+    encoders:
+        Rac\RacBundle\Entity\User:
+           algorithm: bcrypt
+           cost: 12
+
+    access_control:
+        - { path: ^/index, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/gnjadd, roles: ROLE_ADMIN }
+        - { path: ^/gcaadd, roles: ROLE_ADMIN }
+        - { path: ^/add, roles: ROLE_SUADMIN }

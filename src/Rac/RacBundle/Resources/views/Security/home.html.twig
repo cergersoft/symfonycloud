@@ -1,0 +1,23 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+   
+    {{ parent() }}
+    
+   <div class="bajar1"> 
+    <h1> Bienvenido 
+    
+        {% if app.user.role == 'ROLE_ADMIN' %}
+          Administrator
+        {% elseif app.user.role == 'ROLE_USER' %}
+          User
+        {% elseif app.user.role == 'ROLE_SUADMIN' %}
+           Super Admin 
+         {% endif %}
+            -- --
+{{ app.user.username }}
+        
+    </h1> 
+   </div>
+    
+{% endblock %}

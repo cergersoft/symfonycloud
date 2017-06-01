@@ -6,3 +6,6 @@ rac_rac_gnj:
     
 rac_rac_gca:
     resource: "@RacRacBundle/Resources/config/route/gca.yml"
+    
+rac_rac_security:
+    resource: "@RacRacBundle/Resources/config/route/security.yml"

@@ -4,6 +4,8 @@ namespace Rac\RacBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * User
@@ -12,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="Rac\RacBundle\Entity\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class User
+class User implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -80,6 +82,12 @@ class User
      */
     private $createAt;
 
+    
+    public function __construct()
+    {
+       $this->user_active = true;
+    }
+    
 
     /**
      * Get id
@@ -211,10 +219,10 @@ class User
      *
      * @param string $role
      * @return User
-     */
-    public function setRole($role)
+     */ public function setRole($role)
     {
         $this->role = $role;
+   
 
         return $this;
     }
@@ -275,6 +283,25 @@ class User
         return $this->createAt;
     }
     
+    
+    // method faltantes de symfony
+    
+    public function getRoles()
+    {
+        return array($this->role);
+    }
+    
+    public function getSalt()
+    {
+        return null;
+    }   
+    
+    public function eraseCredentials()
+    {
+        
+    }
+    
+    
     // method persint
     
     /**
@@ -284,6 +311,53 @@ class User
     {
         $this->createAt = new \DateTime();
     }
+    
+    
+    
+    
+    
+    // funciones adicionales
+    
+     /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->active
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->active
+        ) = unserialize($serialized);
+    }
+    
+    
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+    public function isEnabled()
+    {
+        return $this->active;
+    }
+    
     
     
 }

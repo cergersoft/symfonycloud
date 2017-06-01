@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Rac\RacBundle\Entity\User;
@@ -13,6 +14,12 @@ use Rac\RacBundle\Form\UserType;
 
 class AdminController extends Controller
 {
+    
+  
+  public function loginhomeAction()
+  {
+  return $this->render('RacRacBundle:Security:home.html.twig');
+  }
     
   public function homeAction()
   {
@@ -56,7 +63,19 @@ class AdminController extends Controller
     
         if($form->isValid()) {
            
+           $password = $form->get('password')->getData();
            
+           $passwordConstraint = new Assert\NotBlank();
+            $errorList = $this->get('validator')->validate($password, $passwordConstraint);
+           
+           if(count($errorList) == 0)
+        {
+	
+            $encoder = $this->container->get('security.password_encoder');
+           $encoded = $encoder->encodePassword($user, $password);
+        
+           $user->setPassword($encoded);
+            
            $em = $this->getDoctrine()->getManager();
            $em->persist($user);
            $em->flush();
@@ -65,8 +84,15 @@ class AdminController extends Controller
            $this->addFlash('alertadd', $successalertadd);
            
            return $this->redirectToRoute('rac_rac_add');
-
-             
+            
+        }else
+        {
+     
+           $errorMessage = new formError($errorList[0]->getMessage());
+           $form->get('password')->addError($errorMessage);
+            
+        }
+              
         }
         
         return $this->render('RacRacBundle:Admin:adminadd.html.twig', array('form' => $form->createView()));

@@ -1,6 +1,10 @@
 rac_rac_homepage:
     path:     /index
     defaults: { _controller: RacRacBundle:Admin:home }
+    
+rac_rac_login_home:
+    path:     /
+    defaults: { _controller: RacRacBundle:Admin:loginhome }
 
 rac_rac_add:
     path:     /add

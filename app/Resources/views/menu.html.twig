@@ -11,6 +11,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
      
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}    
+        
     <ul class="nav navbar-nav">
     
       <li class="dropdown">
@@ -53,14 +55,21 @@
       </li>
       
       <li><a href="{{ path('rac_rac_add') }}">Super Admin</a></li>
-    
+      
     </ul>
+      
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="{{ path('rac_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+    
+    {% elseif is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}  
     
     <ul class="nav navbar-nav navbar-right">
-      
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="{{ path('rac_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
-      
+    
+    {% endif %}
+    
     </div>
   </div>
 </nav>

@@ -1,0 +1,10 @@
+rac_security_login:
+    path:     /login
+    defaults: { _controller: RacRacBundle:Security:login }
+
+rac_security_login_check:
+    path:     /login_check
+    defaults: { _controller: RacRacBundle:Security:login_check }
+    
+rac_security_logout:
+    path:     /logout
