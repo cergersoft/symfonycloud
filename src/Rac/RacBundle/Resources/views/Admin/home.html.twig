@@ -1,5 +1,10 @@
 {% extends "layout.html.twig" %}
 
+ {% block stylesheets %}
+     {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('public/css/fondo.min.css') }}">
+        
+{% endblock %}
 {% block body %}
     {{ parent() }}
     
