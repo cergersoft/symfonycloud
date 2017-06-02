@@ -50,12 +50,16 @@ security:
         - { path: ^/index, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/Ganj/gnj, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Ganj/gnjadd, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Ganj/gnjedit, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Ganj/gnjview, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Gcsa/gca, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Gcsa/gcaadd, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Gcsa/gcaview, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Gcsa/gcaedit, roles: [ROLE_ADMIN, ROLE_SUADMIN] }
-        - { path: ^/Admin/add, roles: ROLE_SUADMIN }
+        - { path: ^/gnj, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gnjadd, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gnjedit, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gnjview, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/Ggca, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gcaadd, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gcaview, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/gcaedit, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SUADMIN] }
+        - { path: ^/add, roles: ROLE_SUADMIN }
+        - { path: ^/edit, roles: ROLE_SUADMIN }
+        - { path: ^/view, roles: ROLE_SUADMIN }
+        - { path: ^/delete, roles: ROLE_SUADMIN }
+        - { path: ^/gnjdelete, roles: ROLE_SUADMIN }
