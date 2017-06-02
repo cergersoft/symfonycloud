@@ -15,9 +15,59 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
      
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}    
-        
+{% if is_granted('ROLE_USER') %}    
     <ul class="nav navbar-nav">
+        
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">walk
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">walk</a></li>
+          <li><a href="#">Payments</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+{% elseif is_granted('ROLE_ADMIN') %} 
+    
+    <ul class="nav navbar-nav">
+    
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">New youth
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ path('rac_Gnj_homepage') }}">List User</a></li>
+          <li><a href="{{ path('rac_Gnj_add') }}">Add User</a></li>
+          <li><a href="#">User invoice</a></li>
+        </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Friends Club
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ path('rac_Gca_homepage') }}">List User</a></li>
+          <li><a href="{{ path('rac_Gca_add') }}">Add User</a></li>
+          <li><a href="#">Assistance users</a></li>
+        </ul>
+      </li>
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Zahira Events
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">calendar</a></li>
+          <li><a href="#">Contracts</a></li>
+          <li><a href="#">View event</a></li>
+        </ul>
+      </li>
+    
+    </ul>
+    
+{% elseif is_granted('ROLE_SUADMIN') %} 
+   
+    
+        <ul class="nav navbar-nav">
     
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">New youth
@@ -58,12 +108,15 @@
         </ul>
       </li>
      
-      
-{% if is_granted('ROLE_SUADMIN') %} 
+
       <li><a href="{{ path('rac_rac_add') }}">Super Admin</a></li>
-{% endif %}     
+    
     </ul>
-      
+  
+{% endif %}     
+
+   {% if is_granted('IS_AUTHENTICATED_FULLY') %} 
+    
     <ul class="nav navbar-nav navbar-right">
       <li><a href="{{ path('rac_security_logout') }}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
