@@ -1,0 +1,50 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {{ parent() }}
+    
+<div class="bajar1">
+    
+    <div class="container">
+        <table class="table">
+	<thead>
+            <tr>
+              <th> <center> Firstname </center> </th>
+              <th> <center> Lastname </center> </th>
+              <th> <center> Phone </center> </th>
+              <th> <center> E mail </center> </th>
+              <th> <center> Date </center> </th>
+              <th> <center> observations </center> </th>
+              <th> <center> State </center> </th>
+              <th> <center> assistence </center> </th>
+            </tr>
+	</thead>
+
+{# codigo del cuerpo de la table #}
+{% for user in pagination %}
+        <tbody>
+            <tr>
+              <td> <center> {{ user.firstname }} </center> </td>
+              <td> <center> {{ user.lastname }} </center> </td>
+              <td> <center> {{ user.phone }} </center> </td>
+              <td> <center> {{ user.mail }} </center> </td>
+              <td> <center>  {{ "now"|date('d/M/Y') }}  </center> </td>
+              <td> <center>  </center> </td>
+              <td> <center>
+                    {% if user.active == 1 %}
+                       <span class="glyphicon glyphicon-ok text-success"></span>
+                    {% elseif user.active == 0 %}
+                       <span class="glyphicon glyphicon-time text-danger"></span>
+                    {% endif %}
+              </center> </td>
+              <td> <center> </center> </td>
+            </tr>
+        </tbody>
+{% endfor %}
+</table>
+    </div>
+
+</div>
+
+{% endblock %}

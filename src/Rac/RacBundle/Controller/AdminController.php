@@ -169,10 +169,8 @@ class AdminController extends Controller
           return $this->redirectToRoute('rac_rac_add');
       }
     }
-  
-  
-  
-  
+    
+   
   // funciones privadas
   
   private function createCreateForm(User $entity)
