@@ -2,10 +2,6 @@ rac_rac:
     resource: "@RacRacBundle/Resources/config/routing.yml"
     prefix:   /
 
-dam_user:
-    resource: "@DamUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

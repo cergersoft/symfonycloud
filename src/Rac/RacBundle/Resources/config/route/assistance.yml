@@ -1,0 +1,8 @@
+rac_Assistence_home:
+    path:     /assistence
+    defaults: { _controller: RacRacBundle:Assistance:assistence }
+    
+rac_Assistence_create:
+    path:     /assiscreate
+    defaults: { _controller: RacRacBundle:Assistance:create }
+    methods: POST

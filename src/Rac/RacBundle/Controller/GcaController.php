@@ -129,29 +129,6 @@ class GcaController extends Controller
        }
    }
    
-   
-   
-   public function assistenceAction(Request $request)
-    {
-      // paginador
-      
-      $em = $this->getDoctrine()->getManager();
-        
-        $sql="SELECT u FROM RacRacBundle:GcaBundle u ORDER BY u.id DESC";
-        $users=$em->createQuery($sql);
-        
-        //codigo para paginacion
-        $paginator=$this->get('knp_paginator');
-        $pagination=$paginator->paginate(
-        $users, $request->query->getInt('page', 1),
-        6
-         );
-      
-      // paginador
-       return $this->render('RacRacBundle:Gcsa:assistence.html.twig', array('pagination' => $pagination)); 
-    }
-  
-    
     
 //funciones privadas
     

@@ -138,7 +138,7 @@ class GcaBundle
     
      public function __construct()
     {
-        $this->assistanced = new ArrayCollection();
+        $this->assistance = new ArrayCollection();
     }
 
 
@@ -495,37 +495,8 @@ class GcaBundle
     {
         $this->createAt = new \DateTime();
     }
-   
-    /**
-     * Add assistanced
-     *
-     * @param \Rac\RacBundle\Entity\Assistance $assistanced
-     * @return GcaBundle
-     */
-    public function addAssistanced(\Rac\RacBundle\Entity\Assistance $assistanced)
-    {
-        $this->assistanced[] = $assistanced;
+    
+    
 
-        return $this;
-    }
-
-    /**
-     * Remove assistanced
-     *
-     * @param \Rac\RacBundle\Entity\Assistance $assistanced
-     */
-    public function removeAssistanced(\Rac\RacBundle\Entity\Assistance $assistanced)
-    {
-        $this->assistanced->removeElement($assistanced);
-    }
-
-    /**
-     * Get assistanced
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAssistanced()
-    {
-        return $this->assistanced;
-    }
+    
 }

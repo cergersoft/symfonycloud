@@ -1,0 +1,66 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+
+    {{ parent() }}
+    
+<div class="bajar1">
+    
+    <div class="container">
+        
+
+        
+       
+        
+        
+        
+        
+        
+    </div>
+    
+    
+    <div class="container">
+        <table class="table">
+	<thead>
+            <tr>
+              <th> <center> Firstname </center> </th>
+              <th> <center> Lastname </center> </th>
+              <th> <center> Phone </center> </th>
+              <th> <center> E mail </center> </th>
+              <th> <center> Date </center> </th>
+              <th> <center> observations </center> </th>
+              <th> <center> assistence </center> </th>
+            </tr>
+	</thead>
+
+{# codigo del cuerpo de la table #}
+
+        <tbody>
+            
+{% for assistance in pagination %}
+            <tr>
+              <td> <center> {{ assistance.gcsa.firstname }} </center> </td>
+              <td> <center> {{ assistance.gcsa.lastname }} </center> </td>
+              <td> <center> {{ assistance.gcsa.phone }} </center> </td>
+              <td> <center> {{ assistance.gcsa.mail }} </center> </td>
+              <td> <center> {{ assistance.createAt|date('d-M-Y H:i') }}  </center> </td>
+              <td> <center> {{ assistance.observations }} </center> </td>
+              <td> <center>
+                {% if assistance.status == 0 %}
+                  <span class="glyphicon glyphicon-time text-danger" title="{% trans %} Waiting {% endtrans %}" id="glyphicon-{{assistance.id}}"></span>
+               {% elseif assistance.status == 1 %}
+                  <span class="glyphicon glyphicon-ok text-success" title="{% trans %} Finish {% endtrans %}" id="glyphicon-{{assistance.id}}"></span>
+               {% endif %} 
+              </center> </td>
+            </tr>
+            
+{% endfor %}
+        </tbody>
+
+
+</table>
+    </div>
+
+</div>
+
+{% endblock %}

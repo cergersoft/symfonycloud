@@ -1,3 +1,0 @@
-dam_user_homepage:
-    path:     /home
-    defaults: { _controller: DamUserBundle:Home:home }

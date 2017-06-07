@@ -75,6 +75,8 @@
             {{ form_widget(form.active) }} &nbsp;&nbsp;Active
             <span class="text-danger">{{ form_errors(form.active) }}</span>
            </label> 
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           {{ form_widget(form.save, { 'label' : 'Register person', 'attr' : { 'class' : 'btn btn-info' } }) }}
       </div>
     </div>
     
@@ -85,13 +87,13 @@
           {{form_widget(form.photo)}}
           <span class="text-danger">{{ form_errors(form.photo) }}</span>
       </div>
-     #}
+     
       <hr>
-           {{ form_widget(form.save, { 'label' : 'Register person', 'attr' : { 'class' : 'btn btn-info' } }) }}
+           
       
     </div>
     
-    
+    #}
             </div>  
     
     

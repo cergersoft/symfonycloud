@@ -9,3 +9,6 @@ rac_rac_gca:
     
 rac_rac_security:
     resource: "@RacRacBundle/Resources/config/route/security.yml"
+    
+rac_rac_assitance:
+    resource: "@RacRacBundle/Resources/config/route/assistance.yml"
